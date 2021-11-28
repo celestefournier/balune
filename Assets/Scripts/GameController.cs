@@ -3,7 +3,6 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField] Camera cam;
-    [SerializeField] float pushForce;
     [SerializeField] ScoreManager scoreManager;
 
     public static bool gameOver;
@@ -15,9 +14,9 @@ public class GameController : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 
-            if (hit.transform?.tag == "Ballon")
+            if (hit.transform?.tag == "Balloon")
             {
-                hit.transform.GetComponent<Rigidbody2D>().AddForce(Vector2.up * pushForce);
+                hit.transform.GetComponent<Balloon>().Push(hit.point.x - hit.transform.position.x);
                 scoreManager.AddScore();
             }
         }

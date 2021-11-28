@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class Balloon : MonoBehaviour
 {
+    [SerializeField] Animator anim;
+    [SerializeField] float pushForce;
+    [SerializeField] float rotateForce;
+
     bool canInteract;
+    Rigidbody2D rb;
+    Collider2D col;
 
     void Start()
     {
-        GetComponent<Collider2D>().enabled = false;
+        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
+        col.enabled = false;
     }
 
     void Update()
@@ -19,6 +27,8 @@ public class Balloon : MonoBehaviour
         {
             CheckForCollision();
         }
+        transform.parent.position += transform.localPosition;
+        transform.localPosition = Vector3.zero;
     }
 
     void CheckForInteract()
@@ -26,7 +36,7 @@ public class Balloon : MonoBehaviour
         if (transform.position.y < 4)
         {
             canInteract = true;
-            GetComponent<Collider2D>().enabled = true;
+            col.enabled = true;
         }
     }
 
@@ -34,22 +44,29 @@ public class Balloon : MonoBehaviour
     {
         if (transform.position.y > 4)
         {
-            GetComponent<Rigidbody2D>().velocity = -GetComponent<Rigidbody2D>().velocity;
+            rb.velocity = -rb.velocity;
             transform.position = new Vector2(transform.position.x, 4);
         }
         if (transform.position.x < -8)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-GetComponent<Rigidbody2D>().velocity.x,
-                GetComponent<Rigidbody2D>().velocity.y
+            rb.velocity = new Vector2(-rb.velocity.x,
+                rb.velocity.y
             );
             transform.position = new Vector2(-8, transform.position.y);
         }
         if (transform.position.x > 8)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-GetComponent<Rigidbody2D>().velocity.x,
-                GetComponent<Rigidbody2D>().velocity.y
+            rb.velocity = new Vector2(-rb.velocity.x,
+                rb.velocity.y
             );
             transform.position = new Vector2(8, transform.position.y);
         }
+    }
+
+    public void Push(float rotation)
+    {
+        rb.AddForce(Vector2.up * pushForce);
+        rb.AddTorque(rotation * rotateForce);
+        anim.SetTrigger("pushed");
     }
 }

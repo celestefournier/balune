@@ -24,8 +24,8 @@ public class BalloonSpawner : MonoBehaviour
         float randomZ = Random.Range(-180, 180);
         Quaternion randomRotation = Quaternion.Euler(0, 0, randomZ);
 
-        GameObject balloon = Instantiate(balloonPrefab, randomPosition, randomRotation, transform);
-
-        balloon.GetComponent<Rigidbody2D>().angularVelocity = randomZ;
+        GameObject balloon = Instantiate(balloonPrefab, randomPosition, Quaternion.identity, transform);
+        balloon.transform.GetChild(0).localRotation = randomRotation;
+        balloon.transform.GetChild(0).GetComponent<Rigidbody2D>().angularVelocity = randomZ;
     }
 }
