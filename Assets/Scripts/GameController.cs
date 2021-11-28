@@ -3,7 +3,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField] Camera cam;
-    [SerializeField] float forca;
+    [SerializeField] float pushForce;
+    [SerializeField] ScoreManager scoreManager;
 
     void Update()
     {
@@ -14,7 +15,8 @@ public class GameController : MonoBehaviour
 
             if (hit.transform?.tag == "Ballon")
             {
-                hit.transform.GetComponent<Rigidbody2D>().AddForce(Vector2.up * forca);
+                hit.transform.GetComponent<Rigidbody2D>().AddForce(Vector2.up * pushForce);
+                scoreManager.AddScore();
             }
         }
     }

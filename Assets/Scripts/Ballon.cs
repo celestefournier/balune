@@ -1,10 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Ballon : MonoBehaviour
 {
-    [SerializeField] Text velUI;
-
     void LateUpdate()
     {
         if (transform.position.y > 4)
@@ -28,10 +25,5 @@ public class Ballon : MonoBehaviour
             );
             transform.position = new Vector2(8, transform.position.y);
         }
-    }
-
-    void Update()
-    {
-        velUI.text = GetComponent<Rigidbody2D>().velocity.y.ToString();
     }
 }
