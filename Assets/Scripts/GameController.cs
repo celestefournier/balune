@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour
     [SerializeField] float pushForce;
     [SerializeField] ScoreManager scoreManager;
 
+    public static bool gameOver;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))

@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    public UnityEvent<int> onScore;
+
     static int score = 0;
     Text scoreText;
 
@@ -15,5 +18,6 @@ public class ScoreManager : MonoBehaviour
     {
         score++;
         scoreText.text = score.ToString();
+        onScore.Invoke(score);
     }
 }
