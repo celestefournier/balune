@@ -6,7 +6,7 @@ public class ScoreManager : MonoBehaviour
 {
     public UnityEvent<int> onScore;
 
-    static int score = 0;
+    public static int score = 0;
     Text scoreText;
 
     void Start()

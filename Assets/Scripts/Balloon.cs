@@ -49,16 +49,12 @@ public class Balloon : MonoBehaviour
         }
         if (transform.position.x < -8)
         {
-            rb.velocity = new Vector2(-rb.velocity.x,
-                rb.velocity.y
-            );
+            rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
             transform.position = new Vector2(-8, transform.position.y);
         }
         if (transform.position.x > 8)
         {
-            rb.velocity = new Vector2(-rb.velocity.x,
-                rb.velocity.y
-            );
+            rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
             transform.position = new Vector2(8, transform.position.y);
         }
     }
