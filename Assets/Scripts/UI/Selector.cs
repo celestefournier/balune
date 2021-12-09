@@ -5,12 +5,12 @@ using UnityEngine.UI;
 public class Selector : MonoBehaviour
 {
     [SerializeField] Text textValue;
-    [SerializeField] string[] options;
+    [SerializeField] public string[] options;
     [SerializeField] UnityEvent<string> onChange;
 
     int index = 0;
 
-    void Start()
+    void Awake()
     {
         textValue.text = options[index];
     }
@@ -27,5 +27,17 @@ public class Selector : MonoBehaviour
         index = index + 1 < options.Length ? index + 1 : 0;
         textValue.text = options[index];
         onChange.Invoke(options[index]);
+    }
+
+    public void SetIndex(int index)
+    {
+        this.index = index;
+        textValue.text = options[index];
+    }
+
+    public void SetOptions(string[] options)
+    {
+        this.options = options;
+        textValue.text = options[index];
     }
 }
