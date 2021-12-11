@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class Localization : MonoBehaviour
 {
-    [SerializeField] string ptBr;
     [SerializeField] string eng;
+    [SerializeField] string ptBr;
 
     void Start()
     {
