@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    [HideInInspector]
     public UnityEvent<int> onScore;
 
     public static int score = 0;
@@ -11,6 +12,7 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
+        score = 0;
         scoreText = GetComponent<Text>();
     }
 

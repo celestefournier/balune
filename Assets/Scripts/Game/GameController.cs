@@ -2,14 +2,19 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     [SerializeField] Camera cam;
     [SerializeField] ScoreManager scoreManager;
     [SerializeField] CanvasGroup scoreScreen;
-    [SerializeField] CanvasGroup gameOverScreen;
     [SerializeField] FadeManager fade;
+
+    [Header("Game Over")]
+    [SerializeField] CanvasGroup gameOverScreen;
+    [SerializeField] Text scoreText;
+    [SerializeField] Text bestScoreText;
 
     public static bool gameOver;
     public static string gameMode = "normal";
@@ -40,6 +45,21 @@ public class GameController : MonoBehaviour
     IEnumerator GameOverDelay()
     {
         Time.timeScale = 0;
+
+        int score = ScoreManager.score;
+        int bestScore = PlayerPrefs.GetInt("bestScore", 0);
+
+        scoreText.text = score.ToString();
+
+        if (score > bestScore)
+        {
+            bestScoreText.text = score.ToString();
+            PlayerPrefs.SetInt("bestScore", score);
+        }
+        else
+        {
+            bestScoreText.text = bestScore.ToString();
+        }
 
         yield return new WaitForSecondsRealtime(1);
 

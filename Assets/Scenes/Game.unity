@@ -1582,8 +1582,10 @@ MonoBehaviour:
   cam: {fileID: 566731385}
   scoreManager: {fileID: 1687201890}
   scoreScreen: {fileID: 553127226}
-  gameOverScreen: {fileID: 1836563205}
   fade: {fileID: 864898147}
+  gameOverScreen: {fileID: 1836563205}
+  scoreText: {fileID: 1805521939}
+  bestScoreText: {fileID: 180199376}
 --- !u!1 &1687201886
 GameObject:
   m_ObjectHideFlags: 0
