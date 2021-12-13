@@ -6,9 +6,10 @@ public class Floor : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (ModeManager.mode == "normal" && col.transform.tag == "Balloon")
+        if (GameController.gameMode == "normal" && col.transform.tag == "Balloon")
         {
-            // gameController.GameOver();
+            gameController.GameOver();
+            col.gameObject.GetComponent<Balloon>().Pop();
         }
     }
 }

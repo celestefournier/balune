@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2738062374201401781}
   - component: {fileID: 3174563122304088418}
   m_Layer: 0
-  m_Name: Balloon
+  m_Name: BalloonFast
   m_TagString: Balloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4b3ba3059c67d27419a5a91e1aadfa0c, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 2
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -125,7 +125,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4086715984596871736, guid: 67d762081ebf8b440bfea60de6801bd7, type: 3}
+  m_Sprite: {fileID: 5732363398190279891, guid: 67d762081ebf8b440bfea60de6801bd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -882,8 +882,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6497d71c2b3324d44b76553a5eb2990b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoplay: 0
-  duration: 0.3
+  autoplay: 1
+  defaultDuration: 1
 --- !u!1 &640124345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2472,7 +2472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6833965829103850387, guid: 8b8c6a067b3fc67408124b711c38d026, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: free
+      value: playground
       objectReference: {fileID: 0}
     - target: {fileID: 6833965829103850387, guid: 8b8c6a067b3fc67408124b711c38d026, type: 3}
       propertyPath: onClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

@@ -17,8 +17,9 @@ public class MenuController : MonoBehaviour
 
     public void StartGame(string mode)
     {
-        ModeManager.mode = mode;
-        fadeManager.FadeIn(() => SceneManager.LoadScene("Game"));
+        float fadeInDuration = 0.3f;
+        GameController.gameMode = mode;
+        fadeManager.FadeIn(() => SceneManager.LoadScene("Game"), fadeInDuration);
     }
 
     public void ToggleSound()

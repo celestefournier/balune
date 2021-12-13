@@ -44,6 +44,6 @@ public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     void OnDisable()
     {
-        OnPointerExit();
+        if (!enabled) OnPointerExit();
     }
 }

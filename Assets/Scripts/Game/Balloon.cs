@@ -9,12 +9,15 @@ public class Balloon : MonoBehaviour
     bool canInteract;
     Rigidbody2D rb;
     Collider2D col;
+    float cameraWidth;
+    float balloonSize = 0.8f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         col.enabled = false;
+        cameraWidth = Camera.main.orthographicSize * Camera.main.aspect - balloonSize;
     }
 
     void Update()
@@ -47,15 +50,15 @@ public class Balloon : MonoBehaviour
             rb.velocity = -rb.velocity;
             transform.position = new Vector2(transform.position.x, 4);
         }
-        if (transform.position.x < -8)
+        if (transform.position.x < -cameraWidth)
         {
             rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
-            transform.position = new Vector2(-8, transform.position.y);
+            transform.position = new Vector2(-cameraWidth, transform.position.y);
         }
-        if (transform.position.x > 8)
+        if (transform.position.x > cameraWidth)
         {
             rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
-            transform.position = new Vector2(8, transform.position.y);
+            transform.position = new Vector2(cameraWidth, transform.position.y);
         }
     }
 
@@ -64,5 +67,10 @@ public class Balloon : MonoBehaviour
         rb.AddForce(Vector2.up * pushForce);
         rb.AddTorque(rotation * rotateForce);
         anim.SetTrigger("pushed");
+    }
+
+    public void Pop()
+    {
+        anim.SetBool("popped", true);
     }
 }

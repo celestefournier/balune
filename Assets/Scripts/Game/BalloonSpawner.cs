@@ -9,7 +9,7 @@ public class BalloonSpawner : MonoBehaviour
     [SerializeField] int scoreToSpawn;
 
     float spawnWidth;
-    float balloonSize = 1;
+    float balloonSize = 0.8f;
 
     void Start()
     {
