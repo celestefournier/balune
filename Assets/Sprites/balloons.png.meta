@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 67d762081ebf8b440bfea60de6801bd7
+guid: b79d4913016fa584e99121fb4a090a78
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5732363398190279891
-    second: ballons_0
+      213: -3630398946770786108
+    second: balloons-v2_0
   - first:
-      213: 4086715984596871736
-    second: ballons_1
+      213: -7862714394112857436
+    second: balloons-v2_1
   - first:
-      213: 8411912022968564879
-    second: ballons_2
+      213: -4717091464293083019
+    second: balloons-v2_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,64 +112,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ballons_0
+      name: balloons-v2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 34
-        height: 53
+        width: 137
+        height: 208
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dc2598a3227d8f40800000000000000
-      internalID: 5732363398190279891
+      spriteID: 4c866c0846b3e9dc0800000000000000
+      internalID: -3630398946770786108
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ballons_1
+      name: balloons-v2_1
       rect:
         serializedVersion: 2
-        x: 34
+        x: 137
         y: 0
-        width: 34
-        height: 53
+        width: 138
+        height: 208
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83aaecf198ee6b830800000000000000
-      internalID: 4086715984596871736
+      spriteID: 4aa6d80cae602e290800000000000000
+      internalID: -7862714394112857436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ballons_2
+      name: balloons-v2_2
       rect:
         serializedVersion: 2
-        x: 68
+        x: 275
         y: 0
-        width: 34
-        height: 53
+        width: 137
+        height: 208
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8cf0eaaa6d1db470800000000000000
-      internalID: 8411912022968564879
+      spriteID: 57898c13e46898eb0800000000000000
+      internalID: -4717091464293083019
       vertices: []
       indices: 
       edges: []

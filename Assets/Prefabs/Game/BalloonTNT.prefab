@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2738062374201401781}
   - component: {fileID: 3174563122304088418}
   m_Layer: 0
-  m_Name: BalloonFast
+  m_Name: BalloonTNT
   m_TagString: Balloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ Transform:
   m_GameObject: {fileID: 4299357182795740563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2738062374201401781}
   m_RootOrder: 0
@@ -125,7 +125,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5732363398190279891, guid: 67d762081ebf8b440bfea60de6801bd7, type: 3}
+  m_Sprite: {fileID: -7862714394112857436, guid: b79d4913016fa584e99121fb4a090a78, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,7 +151,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.02077508}
   serializedVersion: 2
-  m_Radius: 0.2442249
+  m_Radius: 0.9768996
 --- !u!50 &2021639187704549992
 Rigidbody2D:
   serializedVersion: 4

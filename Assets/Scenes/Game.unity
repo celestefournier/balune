@@ -535,6 +535,7 @@ GameObject:
   - component: {fileID: 361564620}
   - component: {fileID: 361564619}
   - component: {fileID: 361564621}
+  - component: {fileID: 361564622}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -617,6 +618,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &361564622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361564617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bb9cebed3e97054091f2d5398cbb409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eng: very good!
+  ptBr: excelente!
 --- !u!1 &407695521
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,18 +1937,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 407695522}
     m_Modifications:
-    - target: {fileID: 131576553623566004, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
-      propertyPath: m_Size.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 131576553623566004, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
-      propertyPath: m_Size.y
-      value: 0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 131576553623566004, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2738062374201401781, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1981,6 +1984,18 @@ PrefabInstance:
     - target: {fileID: 2738062374201401783, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
       propertyPath: m_Name
       value: Balloon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2738062374201401783, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833404034156639604, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833404034156639604, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3833404034156639604, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
       propertyPath: m_LocalPosition.y
