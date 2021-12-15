@@ -4,12 +4,19 @@ public class Floor : MonoBehaviour
 {
     [SerializeField] GameController gameController;
 
-    void OnCollisionEnter2D(Collision2D col)
+    void Start()
     {
-        if (GameController.gameMode == "normal" && col.transform.tag == "Balloon")
+        if (GameController.gameMode == "normal")
         {
-            gameController.GameOver();
-            col.gameObject.GetComponent<Balloon>().Pop();
+            GetComponent<Collider2D>().isTrigger = true;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.tag == "Balloon")
+        {
+            col.GetComponent<Balloon>().Pop();
         }
     }
 }

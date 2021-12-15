@@ -679,6 +679,7 @@ MonoBehaviour:
   balloonPrefab: {fileID: 2738062374201401783, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
   menu: 0
   scoreManager: {fileID: 1687201890}
+  gameController: {fileID: 1666794680}
   scoreToSpawn: 6
 --- !u!1 &414368115
 GameObject:
@@ -1595,7 +1596,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 566731385}
-  scoreManager: {fileID: 1687201890}
   scoreScreen: {fileID: 553127226}
   fade: {fileID: 864898147}
   gameOverScreen: {fileID: 1836563205}
@@ -1753,7 +1753,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2013,6 +2013,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -25
       objectReference: {fileID: 0}
+    - target: {fileID: 7724367298922168978, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
+      propertyPath: scoreManager
+      value: 
+      objectReference: {fileID: 1687201890}
+    - target: {fileID: 7724367298922168978, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 1666794680}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
 --- !u!1 &2121338622

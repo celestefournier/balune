@@ -6,6 +6,7 @@ public class BalloonSpawner : MonoBehaviour
     [SerializeField] GameObject balloonPrefab;
     [SerializeField] bool menu;
     [SerializeField] ScoreManager scoreManager;
+    [SerializeField] GameController gameController;
     [SerializeField] int scoreToSpawn;
 
     float spawnWidth;
@@ -37,11 +38,12 @@ public class BalloonSpawner : MonoBehaviour
         GameObject balloon = Instantiate(balloonPrefab, randomPosition, Quaternion.identity, transform);
         balloon.transform.GetChild(0).localRotation = randomRotation;
         balloon.transform.GetChild(0).GetComponent<Rigidbody2D>().angularVelocity = randomZ;
+        balloon.transform.GetChild(0).GetComponent<Balloon>().Init(gameController, scoreManager);
     }
 
     IEnumerator SpawnCoroutine()
     {
-        while (true)
+        while (!GameController.gameOver)
         {
             SpawnBalloon();
             yield return new WaitForSeconds(9.5f);

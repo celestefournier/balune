@@ -5,10 +5,12 @@ public class Balloon : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] float pushForce;
     [SerializeField] float rotateForce;
+    [SerializeField] GameController gameController;
+    [SerializeField] ScoreManager scoreManager;
 
-    bool canInteract;
     Rigidbody2D rb;
     Collider2D col;
+    bool canInteract;
     float cameraWidth;
     float balloonSize = 0.8f;
 
@@ -32,6 +34,12 @@ public class Balloon : MonoBehaviour
         }
         transform.parent.position += transform.localPosition;
         transform.localPosition = Vector3.zero;
+    }
+
+    public void Init(GameController gameController, ScoreManager scoreManager)
+    {
+        this.gameController = gameController;
+        this.scoreManager = scoreManager;
     }
 
     void CheckForInteract()
@@ -62,15 +70,23 @@ public class Balloon : MonoBehaviour
         }
     }
 
-    public void Push(float rotation)
+    public virtual void Push(float rotation)
     {
         rb.AddForce(Vector2.up * pushForce);
         rb.AddTorque(rotation * rotateForce);
         anim.SetTrigger("pushed");
+        scoreManager.AddScore();
     }
 
     public void Pop()
     {
+        col.enabled = false;
         anim.SetBool("popped", true);
+        gameController.GameOver();
+    }
+
+    void OnBecameInvisible()
+    {
+        if (canInteract) Destroy(transform.parent.gameObject);
     }
 }

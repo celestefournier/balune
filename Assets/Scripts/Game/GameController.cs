@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     [SerializeField] Camera cam;
-    [SerializeField] ScoreManager scoreManager;
     [SerializeField] CanvasGroup scoreScreen;
     [SerializeField] FadeManager fade;
 
@@ -17,7 +16,7 @@ public class GameController : MonoBehaviour
     [SerializeField] Text bestScoreText;
 
     public static bool gameOver;
-    public static string gameMode = "normal";
+    public static string gameMode;
 
     bool fadeIn;
     float fadeInDuration = 0.3f;
@@ -29,10 +28,9 @@ public class GameController : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
 
-            if (hit.transform?.tag == "Balloon")
+            if (hit.transform?.tag == "Balloon" || hit.transform?.tag == "BalloonLose")
             {
                 hit.transform.GetComponent<Balloon>().Push(hit.point.x - hit.transform.position.x);
-                scoreManager.AddScore();
             }
         }
     }

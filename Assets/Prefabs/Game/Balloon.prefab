@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2738062374201401781}
   - component: {fileID: 3174563122304088418}
+  - component: {fileID: 5265500262220846018}
   m_Layer: 0
   m_Name: Balloon
   m_TagString: Balloon
@@ -51,6 +52,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5265500262220846018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2738062374201401783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295eb341aed66e249a979caa79688a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4299357182795740563
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +143,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.34, y: 0.53}
+  m_Size: {x: 0.5, y: 0.47}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

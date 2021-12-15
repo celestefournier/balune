@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2738062374201401781}
   - component: {fileID: 3174563122304088418}
+  - component: {fileID: -8115609595294161186}
   m_Layer: 0
   m_Name: BalloonLose
-  m_TagString: Balloon
+  m_TagString: BalloonLose
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,15 +43,27 @@ Animator:
   m_GameObject: {fileID: 2738062374201401783}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4b3ba3059c67d27419a5a91e1aadfa0c, type: 2}
+  m_Controller: {fileID: 22100000, guid: cf3c73f83d6a2fe41a1ad610f46cabdd, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8115609595294161186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2738062374201401783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295eb341aed66e249a979caa79688a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4299357182795740563
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,10 +76,10 @@ GameObject:
   - component: {fileID: 131576553623566004}
   - component: {fileID: 3818023351700176918}
   - component: {fileID: 2021639187704549992}
-  - component: {fileID: 7724367298922168978}
+  - component: {fileID: 5998982706030855369}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Balloon
+  m_TagString: BalloonLose
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +186,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7724367298922168978
+--- !u!114 &5998982706030855369
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,9 +195,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4299357182795740563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 153281bb9e946fe408bba4a95778bef0, type: 3}
+  m_Script: {fileID: 11500000, guid: d298159ec2da69e448c5c4d0fb45c36c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 3174563122304088418}
   pushForce: 500
   rotateForce: 100
+  gameController: {fileID: 0}
+  scoreManager: {fileID: 0}

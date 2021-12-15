@@ -14,6 +14,24 @@ TextureImporter:
   - first:
       213: 7230291612827641666
     second: ballon-sheet_3
+  - first:
+      213: -8541650839971384692
+    second: balloon-pop_0
+  - first:
+      213: -5483928575667775400
+    second: balloon-pop_1
+  - first:
+      213: 557504728796631981
+    second: balloon-pop_2
+  - first:
+      213: 2181020944676830193
+    second: balloon-pop_3
+  - first:
+      213: -3420393992482059773
+    second: balloon-pop_4
+  - first:
+      213: -424190798294509688
+    second: balloon-pop_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,13 +133,76 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ballon-sheet_0
+      name: balloon-pop_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 47
+        width: 50
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c82b61011d5f57980800000000000000
+      internalID: -8541650839971384692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: balloon-pop_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 47
+        width: 50
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85855b9f30c25e3b0800000000000000
+      internalID: -5483928575667775400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: balloon-pop_2
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 47
+        width: 50
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da31688d897acb700800000000000000
+      internalID: 557504728796631981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: balloon-pop_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 50
-        height: 57
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,20 +210,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05bda53dcf183c130800000000000000
-      internalID: 3585852651194735440
+      spriteID: 1fb362f5efa844e10800000000000000
+      internalID: 2181020944676830193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ballon-sheet_1
+      name: balloon-pop_4
       rect:
         serializedVersion: 2
         x: 50
         y: 0
         width: 50
-        height: 57
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +231,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b022d5db132f66e0800000000000000
-      internalID: -1842215120112836424
+      spriteID: 30a0a3e29c15880d0800000000000000
+      internalID: -3420393992482059773
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ballon-sheet_2
+      name: balloon-pop_5
       rect:
         serializedVersion: 2
         x: 100
         y: 0
         width: 50
-        height: 57
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,29 +252,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59fb319b8a62ca7f0800000000000000
-      internalID: -600062144245678187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ballon-sheet_3
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 0
-        width: 50
-        height: 57
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 247e3150ae7275460800000000000000
-      internalID: 7230291612827641666
+      spriteID: 8879aa667b8fc1af0800000000000000
+      internalID: -424190798294509688
       vertices: []
       indices: 
       edges: []
