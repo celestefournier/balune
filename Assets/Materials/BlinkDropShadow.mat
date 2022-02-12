@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DropShadow
+  m_Name: BlinkDropShadow
   m_Shader: {fileID: 4800000, guid: 5cf230af87750e645a92a839c608f6d0, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _TINT_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -71,7 +71,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Tint: 0
+    - _Tint: 1
     - _UVSec: 0
     - _ZWrite: 1
     - _isToggled: 0

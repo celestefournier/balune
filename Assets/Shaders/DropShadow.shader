@@ -3,6 +3,8 @@ Shader "Unlit/DropShadow"
 	Properties
 	{
 		[PerRendererData] _MainTex ("Sprite Texture", 2D) = "white" {}
+		[MaterialToggle] _Tint("Tint", Float) = 0
+		_Color ("Color", Color) = (0,0,0,1)
 		_ShadowColor ("Shadow", Color) = (0,0,0,1)
 		[ShowAsVector2] _ShadowOffset ("ShadowOffset", Vector) = (0,-0.1,0,0)
 	}
@@ -123,10 +125,17 @@ Shader "Unlit/DropShadow"
 			sampler2D _MainTex;
 			sampler2D _AlphaTex;
 			float _AlphaSplitEnabled;
+			fixed4 _Color;
+			float _Tint;
 
 			fixed4 SampleSpriteTexture(float2 uv)
 			{
 				fixed4 color = tex2D(_MainTex, uv);
+
+				if (_Tint > 0)
+				{
+					color.rgb = _Color.rgb;
+				}
 
 				#if UNITY_TEXTURE_ALPHASPLIT_ALLOWED
 					if (_AlphaSplitEnabled)

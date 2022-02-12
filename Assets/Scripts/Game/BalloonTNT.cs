@@ -2,10 +2,7 @@ using UnityEngine;
 
 public class BalloonTNT : Balloon
 {
-    public override void Push(float rotation)
-    {
-        Pop();
-    }
+    [SerializeField] GameObject explosionPrefab;
 
     public override void Pop()
     {
@@ -18,6 +15,8 @@ public class BalloonTNT : Balloon
                 obj.transform.GetComponent<Balloon>().Pop();
             }
         }
+
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
         col.enabled = false;
         anim.SetBool("popped", true);
