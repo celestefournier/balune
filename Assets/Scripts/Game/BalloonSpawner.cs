@@ -3,20 +3,22 @@ using UnityEngine;
 
 public class BalloonSpawner : MonoBehaviour
 {
+    [SerializeField] bool spawnByTime;
     [SerializeField] GameObject balloonPrefab;
-    [SerializeField] bool menu;
+    [SerializeField] GameObject balloonTNTPrefab;
     [SerializeField] ScoreManager scoreManager;
     [SerializeField] GameController gameController;
     [SerializeField] int scoreToSpawn;
 
     float spawnWidth;
     float balloonSize = 0.8f;
+    int roundsToSpawn = 6;
 
     void Start()
     {
         spawnWidth = Camera.main.orthographicSize * Camera.main.aspect - balloonSize;
 
-        if (menu)
+        if (spawnByTime)
         {
             StartCoroutine("SpawnCoroutine");
         }
@@ -28,14 +30,20 @@ public class BalloonSpawner : MonoBehaviour
 
     void SpawnBalloon(int score = 0)
     {
-        if (!menu && score % scoreToSpawn != 0) return;
+        if (!spawnByTime)
+        {
+            if (score % roundsToSpawn != 0) return;
+        }
+
+        GameObject[] ballons = { balloonPrefab, balloonTNTPrefab };
+        var randomBallon = ballons[Random.Range(0, ballons.Length)];
 
         float randomX = Random.Range(-spawnWidth, spawnWidth);
         Vector2 randomPosition = new Vector2(randomX, transform.position.y);
         float randomZ = Random.Range(-180, 180);
         Quaternion randomRotation = Quaternion.Euler(0, 0, randomZ);
 
-        GameObject balloon = Instantiate(balloonPrefab, randomPosition, Quaternion.identity, transform);
+        GameObject balloon = Instantiate(randomBallon, randomPosition, Quaternion.identity, transform);
         balloon.transform.GetChild(0).localRotation = randomRotation;
         balloon.transform.GetChild(0).GetComponent<Rigidbody2D>().angularVelocity = randomZ;
         balloon.transform.GetChild(0).GetComponent<Balloon>().Init(gameController, scoreManager);

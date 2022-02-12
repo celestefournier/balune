@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 131576553623566004}
   - component: {fileID: 3818023351700176918}
   - component: {fileID: 2021639187704549992}
-  - component: {fileID: 7724367298922168978}
+  - component: {fileID: 7162489504879177642}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Balloon
@@ -186,7 +186,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7724367298922168978
+--- !u!114 &7162489504879177642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,11 +195,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4299357182795740563}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 153281bb9e946fe408bba4a95778bef0, type: 3}
+  m_Script: {fileID: 11500000, guid: 169c279f8b25d4d43823e38cd0c7b8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 3174563122304088418}
-  pushForce: 500
-  rotateForce: 100
+  pushForce: 0
+  rotateForce: 0
   gameController: {fileID: 0}
   scoreManager: {fileID: 0}
