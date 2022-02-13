@@ -17,6 +17,7 @@ public class BalloonTNT : Balloon
         }
 
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Camera.main.GetComponent<CameraShake>().Shake();
 
         col.enabled = false;
         anim.SetBool("popped", true);

@@ -73,15 +73,15 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 2100000, guid: 3c74dc895d0cc8e42968bc82a5fa1193, type: 2}
-    - time: 0.33333334
+    - time: 0.29166666
       value: {fileID: 2100000, guid: a546f82953e2e5c4cac883cb6a195c40, type: 2}
-    - time: 0.6666667
+    - time: 0.5833333
       value: {fileID: 2100000, guid: 3c74dc895d0cc8e42968bc82a5fa1193, type: 2}
-    - time: 1
+    - time: 0.875
       value: {fileID: 2100000, guid: a546f82953e2e5c4cac883cb6a195c40, type: 2}
-    - time: 1.3333334
+    - time: 1.1666666
       value: {fileID: 2100000, guid: 3c74dc895d0cc8e42968bc82a5fa1193, type: 2}
-    - time: 1.6666666
+    - time: 1.4583334
       value: {fileID: 2100000, guid: a546f82953e2e5c4cac883cb6a195c40, type: 2}
     attribute: m_Materials.Array.data[0]
     path: Sprite
@@ -120,7 +120,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.8333334
+    m_StopTime: 1.75
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -305,7 +305,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1.8333334
+  - time: 1.75
     functionName: Pop
     data: 
     objectReferenceParameter: {fileID: 0}
