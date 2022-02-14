@@ -4,9 +4,29 @@ public class BalloonTNT : Balloon
 {
     [SerializeField] GameObject explosionPrefab;
 
-    public override void Pop()
+    bool clicked;
+
+    public override void Push(float rotation)
     {
-        RaycastHit2D[] objects = Physics2D.CircleCastAll(transform.position, 4, Vector2.zero);
+        rb.AddForce(Vector2.up * pushForce);
+        rb.AddTorque(rotation * rotateForce);
+        scoreManager.AddScore();
+
+        if (!clicked)
+        {
+            anim.SetTrigger("pushed");
+            return;
+        }
+
+        clicked = true;
+    }
+
+    public override void Pop(bool gameOver = false)
+    {
+        col.enabled = false;
+        anim.SetBool("popped", true);
+
+        RaycastHit2D[] objects = Physics2D.CircleCastAll(transform.position, 3, Vector2.zero);
 
         foreach (var obj in objects)
         {
@@ -18,8 +38,5 @@ public class BalloonTNT : Balloon
 
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Camera.main.GetComponent<CameraShake>().Shake();
-
-        col.enabled = false;
-        anim.SetBool("popped", true);
     }
 }

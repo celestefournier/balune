@@ -16,7 +16,7 @@ public class Floor : MonoBehaviour
     {
         if (col.tag == "Balloon")
         {
-            col.GetComponent<Balloon>().Pop();
+            col.GetComponent<Balloon>().Pop(true);
         }
     }
 }

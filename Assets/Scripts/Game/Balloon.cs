@@ -3,13 +3,13 @@ using UnityEngine;
 public class Balloon : MonoBehaviour
 {
     [SerializeField] protected Animator anim;
-    [SerializeField] float pushForce;
-    [SerializeField] float rotateForce;
+    [SerializeField] protected float pushForce;
+    [SerializeField] protected float rotateForce;
+    [SerializeField] protected ScoreManager scoreManager;
     [SerializeField] GameController gameController;
-    [SerializeField] ScoreManager scoreManager;
 
     protected Collider2D col;
-    Rigidbody2D rb;
+    protected Rigidbody2D rb;
     bool canInteract;
     float cameraWidth;
     float balloonSize = 0.8f;
@@ -78,11 +78,12 @@ public class Balloon : MonoBehaviour
         scoreManager.AddScore();
     }
 
-    public virtual void Pop()
+    public virtual void Pop(bool gameOver = false)
     {
         col.enabled = false;
         anim.SetBool("popped", true);
-        // gameController.GameOver();
+
+        if (gameOver) gameController.GameOver();
     }
 
     void OnBecameInvisible()
