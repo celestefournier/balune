@@ -9,8 +9,21 @@ public class CameraShake : MonoBehaviour
     [SerializeField] float randomness = 90;
     [SerializeField] bool fadeOut = true;
 
+    Camera cam;
+    Vector3 startPosition;
+
+    void Start()
+    {
+        cam = GetComponent<Camera>();
+        startPosition = transform.position;
+    }
+
     public void Shake()
     {
-        Camera.main.DOShakePosition(duration, strength, vibrato);
+        cam.DOShakePosition(duration, strength, vibrato)
+            .OnComplete(() =>
+            {
+                cam.transform.position = startPosition;
+            });
     }
 }
