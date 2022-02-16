@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class BalloonSpawner : MonoBehaviour
 {
-    [SerializeField] bool spawnByTime;
+    [SerializeField] bool menu;
     [SerializeField] GameObject balloonPrefab;
     [SerializeField] GameObject balloonTNTPrefab;
+    [SerializeField] BalloonWeight[] balloons;
     [SerializeField] ScoreManager scoreManager;
     [SerializeField] GameController gameController;
     [SerializeField] int scoreToSpawn;
@@ -13,30 +14,43 @@ public class BalloonSpawner : MonoBehaviour
     float spawnWidth;
     float balloonSize = 0.8f;
     int roundsToSpawn = 6;
+    float totalWeight;
 
     void Start()
     {
         spawnWidth = Camera.main.orthographicSize * Camera.main.aspect - balloonSize;
 
-        if (spawnByTime)
-        {
-            StartCoroutine("SpawnCoroutine");
-        }
-        else
+        foreach (var balloon in balloons)
+            totalWeight += balloon.weight;
+
+        if (!menu)
         {
             scoreManager.onScore.AddListener(SpawnBalloon);
+            return;
         }
+
+        StartCoroutine("SpawnCoroutine");
     }
 
     void SpawnBalloon(int score = 0)
     {
-        if (!spawnByTime)
-        {
-            if (score % roundsToSpawn != 0) return;
-        }
+        if (!menu && score % roundsToSpawn != 0)
+            return;
 
-        GameObject[] ballons = { balloonPrefab, balloonTNTPrefab };
-        var randomBallon = ballons[Random.Range(0, ballons.Length)];
+        float randomWeight = Random.Range(0, totalWeight);
+        float counterWeight = 0f;
+        GameObject randomBallon = new GameObject();
+
+        foreach (var item in balloons)
+        {
+            counterWeight += item.weight;
+
+            if (randomWeight <= counterWeight)
+            {
+                randomBallon = item.balloon;
+                break;
+            }
+        }
 
         float randomX = Random.Range(-spawnWidth, spawnWidth);
         Vector2 randomPosition = new Vector2(randomX, transform.position.y);

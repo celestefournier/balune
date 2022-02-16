@@ -46,7 +46,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 22100000, guid: 51930a9df11330c4bab5dd25a2670d1b, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -215,8 +215,6 @@ MonoBehaviour:
   anim: {fileID: 3174563122304088418}
   pushForce: 500
   rotateForce: 0
-  gameController: {fileID: 0}
   scoreManager: {fileID: 0}
-  bla: {fileID: 0}
+  gameController: {fileID: 0}
   explosionPrefab: {fileID: 8969564324894934132, guid: 345697256ecc7284f85a4befcacffe84, type: 3}
-  blinkMaterial: {fileID: 0}

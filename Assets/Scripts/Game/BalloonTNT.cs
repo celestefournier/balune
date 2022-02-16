@@ -5,6 +5,7 @@ public class BalloonTNT : Balloon
     [SerializeField] GameObject explosionPrefab;
 
     bool clicked;
+    float explosionRange = 3.5f;
 
     public override void Push(float rotation)
     {
@@ -26,7 +27,8 @@ public class BalloonTNT : Balloon
         col.enabled = false;
         anim.SetBool("popped", true);
 
-        RaycastHit2D[] objects = Physics2D.CircleCastAll(transform.position, 3, Vector2.zero);
+        RaycastHit2D[] objects = Physics2D.CircleCastAll(transform.position, explosionRange,
+            Vector2.zero);
 
         foreach (var obj in objects)
         {
