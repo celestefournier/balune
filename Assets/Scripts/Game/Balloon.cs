@@ -24,14 +24,11 @@ public class Balloon : MonoBehaviour
 
     void Update()
     {
-        if (!canInteract)
-        {
-            CheckForInteract();
-        }
-        else
-        {
+        if (canInteract)
             CheckForCollision();
-        }
+        else
+            CheckForInteract();
+
         transform.parent.position += transform.localPosition;
         transform.localPosition = Vector3.zero;
     }
@@ -40,15 +37,6 @@ public class Balloon : MonoBehaviour
     {
         this.gameController = gameController;
         this.scoreManager = scoreManager;
-    }
-
-    void CheckForInteract()
-    {
-        if (transform.position.y < 4)
-        {
-            canInteract = true;
-            col.enabled = true;
-        }
     }
 
     void CheckForCollision()
@@ -67,6 +55,15 @@ public class Balloon : MonoBehaviour
         {
             rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
             transform.position = new Vector2(cameraWidth, transform.position.y);
+        }
+    }
+
+    void CheckForInteract()
+    {
+        if (transform.position.y < 4)
+        {
+            canInteract = true;
+            col.enabled = true;
         }
     }
 

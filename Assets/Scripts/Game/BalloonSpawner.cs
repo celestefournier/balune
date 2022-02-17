@@ -4,8 +4,6 @@ using UnityEngine;
 public class BalloonSpawner : MonoBehaviour
 {
     [SerializeField] bool menu;
-    [SerializeField] GameObject balloonPrefab;
-    [SerializeField] GameObject balloonTNTPrefab;
     [SerializeField] BalloonWeight[] balloons;
     [SerializeField] ScoreManager scoreManager;
     [SerializeField] GameController gameController;
