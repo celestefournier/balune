@@ -1,56 +1,72 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BalloonSpawner : MonoBehaviour
 {
     [SerializeField] bool menu;
-    [SerializeField] BalloonWeight[] balloons;
     [SerializeField] ScoreManager scoreManager;
     [SerializeField] GameController gameController;
     [SerializeField] int scoreToSpawn;
+    [SerializeField] Balloon startBalloon;
 
-    float spawnWidth;
-    float balloonSize = 0.8f;
+    [Header("Balloons")]
+    [SerializeField] GameObject balloonNormal;
+    [SerializeField] GameObject balloonTNT;
+    [SerializeField] GameObject balloonLose;
+
+    int balloonsCount = 1;
     int roundsToSpawn = 6;
-    float totalWeight;
+    float balloonSize = 0.8f;
+    float spawnRange;
 
     void Start()
     {
-        spawnWidth = Camera.main.orthographicSize * Camera.main.aspect - balloonSize;
+        spawnRange = Camera.main.orthographicSize * Camera.main.aspect - balloonSize;
 
-        foreach (var balloon in balloons)
-            totalWeight += balloon.weight;
+        List<Balloon> balloons = new List<Balloon>
+        {
+            balloonNormal.transform.GetChild(0).GetComponent<Balloon>(),
+            balloonTNT.transform.GetChild(0).GetComponent<Balloon>(),
+            balloonLose.transform.GetChild(0).GetComponent<Balloon>()
+        };
 
         if (!menu)
         {
-            scoreManager.onScore.AddListener(SpawnBalloon);
+            scoreManager.onScore.AddListener(score => SpawnBalloon(balloons, score));
+            startBalloon.Init(gameController, scoreManager, RemoveBalloon);
             return;
         }
 
         StartCoroutine("SpawnCoroutine");
     }
 
-    void SpawnBalloon(int score = 0)
+    void SpawnBalloon(List<Balloon> spawnBalloons, int score = 0)
     {
-        if (!menu && score % roundsToSpawn != 0)
+        if (!menu && score != 0 && score % roundsToSpawn != 0)
             return;
 
-        float randomWeight = Random.Range(0, totalWeight);
-        float counterWeight = 0f;
-        GameObject randomBallon = new GameObject();
+        float spawnWeight = 0f;
 
-        foreach (var item in balloons)
+        foreach (var item in spawnBalloons)
+            spawnWeight += item.spawnRate;
+
+        float randomWeight = Random.Range(0, spawnWeight);
+        float counterWeight = 0f;
+        GameObject randomBallon = null;
+
+        foreach (var item in spawnBalloons)
         {
-            counterWeight += item.weight;
+            counterWeight += item.spawnRate;
 
             if (randomWeight <= counterWeight)
             {
-                randomBallon = item.balloon;
+                randomBallon = item.transform.parent.gameObject;
                 break;
             }
         }
 
-        float randomX = Random.Range(-spawnWidth, spawnWidth);
+        float randomX = Random.Range(-spawnRange, spawnRange);
         Vector2 randomPosition = new Vector2(randomX, transform.position.y);
         float randomZ = Random.Range(-180, 180);
         Quaternion randomRotation = Quaternion.Euler(0, 0, randomZ);
@@ -58,15 +74,30 @@ public class BalloonSpawner : MonoBehaviour
         GameObject balloon = Instantiate(randomBallon, randomPosition, Quaternion.identity, transform);
         balloon.transform.GetChild(0).localRotation = randomRotation;
         balloon.transform.GetChild(0).GetComponent<Rigidbody2D>().angularVelocity = randomZ;
-        balloon.transform.GetChild(0).GetComponent<Balloon>().Init(gameController, scoreManager);
+        balloon.transform.GetChild(0).GetComponent<Balloon>().Init(gameController, scoreManager, RemoveBalloon);
+
+        balloonsCount++;
     }
 
     IEnumerator SpawnCoroutine()
     {
+        var balloonList = new List<Balloon> { balloonNormal.transform.GetChild(0).GetComponent<Balloon>() };
+
         while (!GameController.gameOver)
         {
-            SpawnBalloon();
+            SpawnBalloon(balloonList);
             yield return new WaitForSeconds(9.5f);
+        }
+    }
+
+    void RemoveBalloon()
+    {
+        balloonsCount--;
+
+        if (balloonsCount <= 0)
+        {
+            var balloonList = new List<Balloon> { balloonNormal.transform.GetChild(0).GetComponent<Balloon>() };
+            SpawnBalloon(balloonList);
         }
     }
 }

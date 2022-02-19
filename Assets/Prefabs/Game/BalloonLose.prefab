@@ -198,8 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d298159ec2da69e448c5c4d0fb45c36c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 3174563122304088418}
+  spawnRate: 1
   pushForce: 500
   rotateForce: 100
-  gameController: {fileID: 0}
-  scoreManager: {fileID: 0}
+  anim: {fileID: 3174563122304088418}

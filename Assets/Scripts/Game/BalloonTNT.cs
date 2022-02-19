@@ -11,7 +11,6 @@ public class BalloonTNT : Balloon
     {
         rb.AddForce(Vector2.up * pushForce);
         rb.AddTorque(rotation * rotateForce);
-        scoreManager.AddScore();
 
         if (!clicked)
         {
@@ -26,6 +25,7 @@ public class BalloonTNT : Balloon
     {
         col.enabled = false;
         anim.SetBool("popped", true);
+        scoreManager.AddScore();
 
         RaycastHit2D[] objects = Physics2D.CircleCastAll(transform.position, explosionRange,
             Vector2.zero);

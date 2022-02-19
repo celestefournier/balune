@@ -320,6 +320,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123216631}
   m_CullTransparentMesh: 1
+--- !u!114 &144484080 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7724367298922168978, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
+  m_PrefabInstance: {fileID: 1918141950}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153281bb9e946fe408bba4a95778bef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &147159197
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,18 +540,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: 0
-  balloonPrefab: {fileID: 2738062374201401783, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
-  balloonTNTPrefab: {fileID: 2738062374201401783, guid: 2d33a5cc99668994bb100cb7b986d91c, type: 3}
-  balloons:
-  - balloon: {fileID: 2738062374201401783, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
-    weight: 5
-  - balloon: {fileID: 2738062374201401783, guid: 0de9872290b40ac4eab4caaebfd12876, type: 3}
-    weight: 1
-  - balloon: {fileID: 2738062374201401783, guid: 2d33a5cc99668994bb100cb7b986d91c, type: 3}
-    weight: 1
   scoreManager: {fileID: 985122501}
   gameController: {fileID: 1666794680}
   scoreToSpawn: 6
+  startBalloon: {fileID: 144484080}
+  balloonNormal: {fileID: 2738062374201401783, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
+  balloonTNT: {fileID: 2738062374201401783, guid: 2d33a5cc99668994bb100cb7b986d91c, type: 3}
+  balloonLose: {fileID: 2738062374201401783, guid: 0de9872290b40ac4eab4caaebfd12876, type: 3}
 --- !u!1 &409189757
 GameObject:
   m_ObjectHideFlags: 0

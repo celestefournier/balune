@@ -1,15 +1,18 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Balloon : MonoBehaviour
 {
-    [SerializeField] protected Animator anim;
+    [SerializeField] public float spawnRate;
     [SerializeField] protected float pushForce;
     [SerializeField] protected float rotateForce;
-    [SerializeField] protected ScoreManager scoreManager;
-    [SerializeField] GameController gameController;
+    [SerializeField] protected Animator anim;
 
+    protected UnityEvent onDestroy = new UnityEvent();
+    protected ScoreManager scoreManager;
     protected Collider2D col;
     protected Rigidbody2D rb;
+    GameController gameController;
     bool canInteract;
     float cameraWidth;
     float balloonSize = 0.8f;
@@ -33,10 +36,11 @@ public class Balloon : MonoBehaviour
         transform.localPosition = Vector3.zero;
     }
 
-    public void Init(GameController gameController, ScoreManager scoreManager)
+    public void Init(GameController gameController, ScoreManager scoreManager, UnityAction onDestroy)
     {
         this.gameController = gameController;
         this.scoreManager = scoreManager;
+        this.onDestroy.AddListener(onDestroy);
     }
 
     void CheckForCollision()
@@ -80,11 +84,18 @@ public class Balloon : MonoBehaviour
         col.enabled = false;
         anim.SetBool("popped", true);
 
-        if (gameOver) gameController.GameOver();
+        if (gameOver)
+            gameController.GameOver();
+        else
+            scoreManager.AddScore();
     }
 
     void OnBecameInvisible()
     {
-        if (canInteract) Destroy(transform.parent.gameObject);
+        if (canInteract)
+        {
+            onDestroy.Invoke();
+            Destroy(transform.parent.gameObject);
+        }
     }
 }
