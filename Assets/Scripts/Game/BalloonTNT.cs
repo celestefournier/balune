@@ -9,8 +9,16 @@ public class BalloonTNT : Balloon
 
     public override void Push(float rotation)
     {
-        rb.AddForce(Vector2.up * pushForce);
+        var maxAngle = 45;
+        var normalizeRotation = 90;
+        var angle = ((rotation / col.radius) * maxAngle) + normalizeRotation;
+        var anglePosition = new Vector2(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle));
+        var angleDifference = angle - transform.parent.rotation.eulerAngles.z;
+
+        rb.AddForce(anglePosition * pushForce);
         rb.AddTorque(rotation * rotateForce);
+        transform.parent.rotation = Quaternion.Euler(0, 0, angle);
+        transform.localRotation = Quaternion.Euler(0, 0, transform.localRotation.eulerAngles.z - angleDifference);
 
         if (!clicked)
         {

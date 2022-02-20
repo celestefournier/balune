@@ -199,8 +199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 5
-  anim: {fileID: 3174563122304088418}
   pushForce: 500
   rotateForce: 100
-  scoreManager: {fileID: 0}
-  gameController: {fileID: 0}
+  anim: {fileID: 3174563122304088418}

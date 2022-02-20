@@ -10,7 +10,7 @@ public class Balloon : MonoBehaviour
 
     protected UnityEvent onDestroy = new UnityEvent();
     protected ScoreManager scoreManager;
-    protected Collider2D col;
+    protected CircleCollider2D col;
     protected Rigidbody2D rb;
     GameController gameController;
     bool canInteract;
@@ -20,7 +20,7 @@ public class Balloon : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
+        col = GetComponent<CircleCollider2D>();
         col.enabled = false;
         cameraWidth = Camera.main.orthographicSize * Camera.main.aspect - balloonSize;
     }
@@ -32,7 +32,7 @@ public class Balloon : MonoBehaviour
         else
             CheckForInteract();
 
-        transform.parent.position += transform.localPosition;
+        transform.parent.position = transform.position;
         transform.localPosition = Vector3.zero;
     }
 
@@ -47,7 +47,7 @@ public class Balloon : MonoBehaviour
     {
         if (transform.position.y > 4)
         {
-            rb.velocity = -rb.velocity;
+            rb.velocity = new Vector2(rb.velocity.x, -rb.velocity.y);
             transform.position = new Vector2(transform.position.x, 4);
         }
         if (transform.position.x < -cameraWidth)
@@ -73,8 +73,16 @@ public class Balloon : MonoBehaviour
 
     public virtual void Push(float rotation)
     {
-        rb.AddForce(Vector2.up * pushForce);
+        var maxAngle = 45;
+        var normalizeRotation = 90;
+        var angle = ((rotation / col.radius) * maxAngle) + normalizeRotation;
+        var anglePosition = new Vector2(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle));
+        var angleDifference = angle - transform.parent.rotation.eulerAngles.z;
+
+        rb.AddForce(anglePosition * pushForce);
         rb.AddTorque(rotation * rotateForce);
+        transform.parent.rotation = Quaternion.Euler(0, 0, angle);
+        transform.localRotation = Quaternion.Euler(0, 0, transform.localRotation.eulerAngles.z - angleDifference);
         anim.SetTrigger("pushed");
         scoreManager.AddScore();
     }
