@@ -24,6 +24,12 @@ public class BalloonSpawner : MonoBehaviour
     {
         spawnRange = Camera.main.orthographicSize * Camera.main.aspect - balloonSize;
 
+        if (menu)
+        {
+            StartCoroutine("SpawnCoroutine");
+            return;
+        }
+
         List<Balloon> balloons = new List<Balloon>
         {
             balloonNormal.transform.GetChild(0).GetComponent<Balloon>(),
@@ -31,14 +37,9 @@ public class BalloonSpawner : MonoBehaviour
             balloonLose.transform.GetChild(0).GetComponent<Balloon>()
         };
 
-        if (!menu)
-        {
-            scoreManager.onScore.AddListener(score => SpawnBalloon(balloons, score));
-            startBalloon.Init(gameController, scoreManager, RemoveBalloon);
-            return;
-        }
-
-        StartCoroutine("SpawnCoroutine");
+        scoreManager.onScore.AddListener(score => SpawnBalloon(balloons, score));
+        startBalloon.Init(gameController, scoreManager, RemoveBalloon);
+        return;
     }
 
     void SpawnBalloon(List<Balloon> spawnBalloons, int score = 0)
