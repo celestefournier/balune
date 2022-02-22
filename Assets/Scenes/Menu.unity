@@ -653,9 +653,15 @@ MonoBehaviour:
   gameController: {fileID: 0}
   scoreToSpawn: 0
   startBalloon: {fileID: 0}
-  balloonNormal: {fileID: 2738062374201401783, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
-  balloonTNT: {fileID: 0}
-  balloonLose: {fileID: 0}
+  balloonNormal:
+    balloon: {fileID: 2738062374201401783, guid: 9c5b86354d036c34485e8becf3dc197b, type: 3}
+    weight: 1
+  balloonTNT:
+    balloon: {fileID: 0}
+    weight: 0
+  balloonLose:
+    balloon: {fileID: 0}
+    weight: 0
 --- !u!4 &311054384
 Transform:
   m_ObjectHideFlags: 0

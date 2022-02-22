@@ -11,9 +11,9 @@ public class BalloonSpawner : MonoBehaviour
     [SerializeField] Balloon startBalloon;
 
     [Header("Balloons")]
-    [SerializeField] GameObject balloonNormal;
-    [SerializeField] GameObject balloonTNT;
-    [SerializeField] GameObject balloonLose;
+    [SerializeField] BalloonWeight balloonNormal;
+    [SerializeField] BalloonWeight balloonTNT;
+    [SerializeField] BalloonWeight balloonLose;
 
     int balloonsCount = 1;
     int roundsToSpawn = 6;
@@ -30,11 +30,11 @@ public class BalloonSpawner : MonoBehaviour
             return;
         }
 
-        List<Balloon> balloons = new List<Balloon>
+        List<BalloonWeight> balloons = new List<BalloonWeight>
         {
-            balloonNormal.transform.GetChild(0).GetComponent<Balloon>(),
-            balloonTNT.transform.GetChild(0).GetComponent<Balloon>(),
-            balloonLose.transform.GetChild(0).GetComponent<Balloon>()
+            balloonNormal,
+            balloonTNT,
+            balloonLose
         };
 
         scoreManager.onScore.AddListener(score => SpawnBalloon(balloons, score));
@@ -42,27 +42,27 @@ public class BalloonSpawner : MonoBehaviour
         return;
     }
 
-    void SpawnBalloon(List<Balloon> spawnBalloons, int score = 0)
+    void SpawnBalloon(List<BalloonWeight> balloons, int score = 0)
     {
         if (!menu && score != 0 && score % roundsToSpawn != 0)
             return;
 
         float spawnWeight = 0f;
 
-        foreach (var item in spawnBalloons)
-            spawnWeight += item.spawnRate;
+        foreach (var item in balloons)
+            spawnWeight += item.weight;
 
         float randomWeight = Random.Range(0, spawnWeight);
         float counterWeight = 0f;
         GameObject randomBallon = null;
 
-        foreach (var item in spawnBalloons)
+        foreach (var item in balloons)
         {
-            counterWeight += item.spawnRate;
+            counterWeight += item.weight;
 
             if (randomWeight <= counterWeight)
             {
-                randomBallon = item.transform.parent.gameObject;
+                randomBallon = item.balloon;
                 break;
             }
         }
@@ -78,11 +78,12 @@ public class BalloonSpawner : MonoBehaviour
         balloon.transform.GetChild(0).GetComponent<Balloon>().Init(gameController, scoreManager, RemoveBalloon);
 
         balloonsCount++;
+        CheckToSpawnTNT();
     }
 
     IEnumerator SpawnCoroutine()
     {
-        var balloonList = new List<Balloon> { balloonNormal.transform.GetChild(0).GetComponent<Balloon>() };
+        var balloonList = new List<BalloonWeight> { balloonNormal };
 
         while (!GameController.gameOver)
         {
@@ -94,11 +95,37 @@ public class BalloonSpawner : MonoBehaviour
     void RemoveBalloon()
     {
         balloonsCount--;
+        CheckToSpawnTNT();
 
         if (balloonsCount <= 0)
         {
-            var balloonList = new List<Balloon> { balloonNormal.transform.GetChild(0).GetComponent<Balloon>() };
+            var balloonList = new List<BalloonWeight> { balloonNormal };
             SpawnBalloon(balloonList);
         }
     }
+
+    void CheckToSpawnTNT()
+    {
+        float maxBalloons = 6;
+        float weight = 1;
+
+        if (balloonsCount > maxBalloons)
+        {
+            float incrementalWeight = 3;
+            float spawnRate = (balloonsCount - maxBalloons) * incrementalWeight + weight;
+
+            balloonTNT.weight = spawnRate;
+        }
+        else
+        {
+            balloonTNT.weight = weight;
+        }
+    }
+}
+
+[System.Serializable]
+public class BalloonWeight
+{
+    public GameObject balloon;
+    public float weight;
 }
