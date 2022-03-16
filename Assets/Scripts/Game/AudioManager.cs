@@ -10,7 +10,11 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        StartCoroutine("FadeIn");
+
+        if (PlayerPrefs.GetInt("sound", 1) == 1)
+            StartCoroutine("FadeIn");
+        else
+            audioSource.enabled = false;
     }
 
     IEnumerator FadeIn()
