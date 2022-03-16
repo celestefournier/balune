@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !gameOver)
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
     IEnumerator GameOverDelay()
     {
         Time.timeScale = 0;
+        gameOver = true;
 
         int score = ScoreManager.score;
         int bestScore = PlayerPrefs.GetInt("bestScore", 0);
