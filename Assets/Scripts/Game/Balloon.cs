@@ -17,7 +17,7 @@ public class Balloon : MonoBehaviour
     float cameraWidth;
     float balloonSize = 0.8f;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<CircleCollider2D>();

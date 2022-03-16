@@ -35,8 +35,7 @@ public class BalloonTNT : Balloon
         anim.SetBool("popped", true);
         scoreManager.AddScore();
 
-        RaycastHit2D[] objects = Physics2D.CircleCastAll(transform.position, explosionRange,
-            Vector2.zero);
+        var objects = Physics2D.CircleCastAll(transform.position, explosionRange, Vector2.zero);
 
         foreach (var obj in objects)
         {
