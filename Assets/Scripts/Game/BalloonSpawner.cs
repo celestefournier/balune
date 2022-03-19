@@ -30,12 +30,15 @@ public class BalloonSpawner : MonoBehaviour
             return;
         }
 
-        List<BalloonWeight> balloons = new List<BalloonWeight>
+        List<BalloonWeight> balloons;
+
+        if (GameController.gameMode == "playground")
         {
-            balloonNormal,
-            balloonTNT,
-            balloonLose
-        };
+            balloons = new List<BalloonWeight> { balloonNormal, balloonTNT };
+            roundsToSpawn = 2;
+        }
+        else
+            balloons = new List<BalloonWeight> { balloonNormal, balloonTNT, balloonLose };
 
         scoreManager.onScore.AddListener(score => SpawnBalloon(balloons, score));
         startBalloon.Init(gameController, scoreManager, RemoveBalloon);
