@@ -78,6 +78,7 @@ public class GameController : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 Time.timeScale = 1;
             }, fadeInDuration);
+            gameOver = false;
         }
     }
 

@@ -78,6 +78,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.2}
+    - _ShadowColor: {r: 0.6862745, g: 0.7921569, b: 0.49019608, a: 1}
     - _ShadowOffset: {r: 0.5, g: -0.5, b: 0, a: 0}
   m_BuildTextureStacks: []

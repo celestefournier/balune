@@ -58,7 +58,7 @@ Shader "Unlit/DropShadow"
 				OUT.vertex = mul(unity_WorldToObject, OUT.vertex);
 
 				OUT.texcoord = IN.texcoord;
-				OUT.color = IN.color *_ShadowColor;
+				OUT.color = IN.color;
 				OUT.vertex = UnityObjectToClipPos(OUT.vertex);
 
 				return OUT;
@@ -71,6 +71,7 @@ Shader "Unlit/DropShadow"
 			fixed4 SampleSpriteTexture(float2 uv)
 			{
 				fixed4 color = tex2D(_MainTex, uv);
+
 				color.rgb = _ShadowColor.rgb;
 
 				#if UNITY_TEXTURE_ALPHASPLIT_ALLOWED
