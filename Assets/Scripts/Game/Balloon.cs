@@ -7,6 +7,7 @@ public class Balloon : MonoBehaviour
     [SerializeField] protected float pushForce;
     [SerializeField] protected float rotateForce;
     [SerializeField] protected Animator anim;
+    [SerializeField] GameObject popPrefab;
 
     protected UnityEvent onDestroy = new UnityEvent();
     protected ScoreManager scoreManager;
@@ -90,12 +91,14 @@ public class Balloon : MonoBehaviour
     public virtual void Pop(bool gameOver = false)
     {
         col.enabled = false;
-        anim.SetBool("popped", true);
 
         if (gameOver)
             gameController.GameOver();
         else
             scoreManager.AddScore();
+
+        Instantiate(popPrefab, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     void OnBecameInvisible()

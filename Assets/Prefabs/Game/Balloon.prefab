@@ -202,3 +202,4 @@ MonoBehaviour:
   pushForce: 500
   rotateForce: 100
   anim: {fileID: 3174563122304088418}
+  popPrefab: {fileID: 8969564324894934132, guid: b965f9c735cc55a4c8ed73768dc8f2fb, type: 3}
